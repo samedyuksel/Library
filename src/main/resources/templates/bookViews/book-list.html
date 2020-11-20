@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot Thymeleaf + Spring Security</title>
+
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+    <h1>Book List</h1>
+    <div>
+        <nobr>
+            <a class="badge badge-warning" th:href="@{/books/add}">Add Book</a> |
+            <a class="badge badge-warning" th:href="@{/}">Back to Index</a>
+        </nobr>
+    </div>
+    <br/><br/>
+
+    <div>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Id</th>
+                <th>ISBN</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Publisher</th>
+                <th>Description</th>
+                <th>Edit</th>
+            </tr>
+            <tr th:each ="book : ${books}">
+                <td th:utext="${book.id}">.../>
+                <td th:utext="${book.ISBN}">...</td>
+                <td><a style="text-decoration: none" th:href="@{/books/{bookId}(bookId=${book.id})}" th:utext="${book.name}">...</a></td>
+                <td th:utext="${book.getAuthor().name} + ${book.getAuthor().surName}" >...</td>
+                <td th:utext="${book.getPublisher().name}">...</td>
+                <td th:utext="${book.description}">...</td>
+                <td><a style="text-decoration: none" class="badge badge-danger" th:href="@{/books/{bookId}/edit(bookId=${book.id})}"> Edit </a></td>
+            </tr>
+        </table>
+    </div>
+    <br/>
+    <div>
+        <nobr>
+            <span th:if="${hasPrev}"><a class="badge badge-warning" th:href="@{/books?page={prev}(prev=${prev})}"> Prev </a>&nbsp;&nbsp;&nbsp;</span>
+            <span th:if="${hasNext}"><a class="badge badge-warning" th:href="@{/books?page={next}(next=${next})}"> Next </a></span>
+        </nobr>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

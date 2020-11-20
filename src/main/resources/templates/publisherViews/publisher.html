@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot Thymeleaf + Spring Security</title>
+
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+<div class="container">
+    <h1>View Publisher</h1>
+    <a class="badge badge-warning" th:href="@{/publishers}">Back to Publisher List</a>
+    <br/><br/>
+    <div th:if="${publisher}">
+        <table class="table striped table-hover">
+            <tr>
+                <td>ID</td>
+                <td>:</td>
+                <td th:utext="${publisher.id}">...</td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>:</td>
+                <td th:utext="${publisher.name}">...</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>:</td>
+                <td th:utext="${publisher.description}">...</td>
+            </tr>
+        </table>
+        <br/><br/>
+        <div th:if="not ${allowDelete}">
+            <a class="badge badge-secondary" th:href="@{/publishers/{publisherId}/edit(publisherId=${publisher.id})}">Edit</a> |
+            <a class="badge badge-danger" th:href="@{/publishers/{publisherId}/delete(publisherId=${publisher.id})}">Delete</a>
+        </div>
+        <form th:if="${allowDelete}" th:action="@{/publishers/{publisherId}/delete(publisherId=${publisher.id})}" method="POST">
+            <span class="badge badge-danger"> Delete this publisher? <input type="submit" class="btn-secondary" th:value="Yes" /> </span>
+        </form>
+
+    </div>
+    <div th:if="${errorMessage}" th:utext="${errorMessage}" class="error" />
+
+</div>
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot Thymeleaf + Spring Security</title>
+
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+<div class="container">
+    <h1 th:text="${add} ? 'Create a Book:' : 'Edit a Book:'" />
+    <a class="badge badge-warning" th:href="@{/books}">Back to Book List</a>
+    <br/><br/>
+    <form th:action="${add} ? @{/books/add} : @{/books/{bookId}/edit(bookId=${book.id})}"
+          th:object="${book}" method="POST">
+        <table>
+            <tr th:if="${book.id}">
+                <td>ID</td>
+                <td>: </td>
+                <td th:utext="${book.id}">...</td>
+            </tr>
+            <tr>
+                <td>ISBN</td>
+                <td>: </td>
+                <td><input type="text" th:field="*{ISBN}" /></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>: </td>
+                <td><input type="text" th:field="*{name}" /></td>
+            </tr>
+            <tr>
+                <td>Author Id</td>
+                <td>: </td>
+                <td><input type="text" th:field="*{author}" /></td>
+            </tr>
+            <tr>
+                <td>Publisher Id</td>
+                <td>: </td>
+                <td><input type="text" th:field="*{publisher}" /></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>: </td>
+                <td><textarea th:field="*{description}" rows="3" cols="50" /></td>
+            </tr>
+        </table>
+        <input type="submit" class="btn btn-outline-success" th:value="${add} ? 'Create' : 'Update'" />
+    </form>
+
+    <br/>
+    <!-- Check if errorMessage is not null and not empty -->
+    <div th:if="${errorMessage}" th:utext="${errorMessage}" class="error" />
+</div>
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>
