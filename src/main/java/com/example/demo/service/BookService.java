@@ -30,7 +30,11 @@ public class BookService {
         else return book;
     }
 
-    public List<Book> findAll(int pageNumber, int rowPerPage) {
+    public List<Book> findAll(int pageNumber, int rowPerPage, String keyword) {
+        if (keyword != null){
+            return bookRepository.search(keyword);
+        }
+
         List<Book> book = new ArrayList<>();
         Pageable sortedByIdAsc = PageRequest.of(pageNumber - 1, rowPerPage,
                 Sort.by("id").ascending());

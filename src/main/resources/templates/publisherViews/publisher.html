@@ -10,7 +10,7 @@
 <div th:replace="fragments/header :: header"/>
 <div class="container">
     <h1>View Publisher</h1>
-    <a class="badge badge-warning" th:href="@{/publishers}">Back to Publisher List</a>
+    <a class="btn btn-warning btn-sm" th:href="@{/publishers}">Back to Publisher List</a>
     <br/><br/>
     <div th:if="${publisher}">
         <table class="table striped table-hover">
@@ -32,11 +32,11 @@
         </table>
         <br/><br/>
         <div th:if="not ${allowDelete}">
-            <a class="badge badge-secondary" th:href="@{/publishers/{publisherId}/edit(publisherId=${publisher.id})}">Edit</a> |
-            <a class="badge badge-danger" th:href="@{/publishers/{publisherId}/delete(publisherId=${publisher.id})}">Delete</a>
+            <a class="btn btn-secondary btn-sm" th:href="@{/publishers/{publisherId}/edit(publisherId=${publisher.id})}">Edit</a> |
+            <a class="btn btn-danger btn-sm" th:href="@{/publishers/{publisherId}/delete(publisherId=${publisher.id})}">Delete</a>
         </div>
         <form th:if="${allowDelete}" th:action="@{/publishers/{publisherId}/delete(publisherId=${publisher.id})}" method="POST">
-            <span class="badge badge-danger"> Delete this publisher? <input type="submit" class="btn-secondary" th:value="Yes" /> </span>
+            <span class="btn btn-danger btn-sm"> Delete this publisher? <input type="submit" class="btn-secondary" th:value="Yes" /> </span>
         </form>
 
     </div>

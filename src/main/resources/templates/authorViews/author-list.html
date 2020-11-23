@@ -12,8 +12,8 @@
     <h1>Author List</h1>
     <div>
         <nobr>
-            <a class="badge badge-warning" th:href="@{/authors/add}">Add Author</a> |
-            <a class="badge badge-warning" th:href="@{/}">Back to Index</a>
+            <a class="btn btn-warning btn-sm" th:href="@{/authors/add}">Add Author</a> |
+            <a class="btn btn-warning btn-sm" th:href="@{/}">Back to Index</a>
         </nobr>
     </div>
     <br/><br/>
@@ -32,15 +32,15 @@
                 <td><a style="text-decoration: none" th:href="@{/authors/{authorId}(authorId=${author.id})}" th:utext="${author.name}">...</a></td>
                 <td th:utext="${author.surName}">...</td>
                 <td th:utext="${author.description}">...</td>
-                <td><a style="text-decoration: none" class="badge badge-danger" th:href="@{/authors/{authorId}/edit(authorId=${author.id})}"> Edit </a></td>
+                <td><a style="text-decoration: none" class="btn btn-danger btn-sm" th:href="@{/authors/{authorId}/edit(authorId=${author.id})}"> Edit </a></td>
             </tr>
         </table>
     </div>
     <br/>
     <div>
         <nobr>
-            <span th:if="${hasPrev}"><a class="badge badge-warning" th:href="@{/authors?page={prev}(prev=${prev})}"> Prev </a>&nbsp;&nbsp;&nbsp;</span>
-            <span th:if="${hasNext}"><a class="badge badge-warning" th:href="@{/authors?page={next}(next=${next})}"> Next </a></span>
+            <span th:if="${hasPrev}"><a class="btn btn-warning btn-sm" th:href="@{/authors?page={prev}(prev=${prev})}"> Prev </a>&nbsp;&nbsp;&nbsp;</span>
+            <span th:if="${hasNext}"><a class="btn btn-warning btn-sm" th:href="@{/authors?page={next}(next=${next})}"> Next </a></span>
         </nobr>
     </div>
 </div>

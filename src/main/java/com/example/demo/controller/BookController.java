@@ -5,6 +5,7 @@ import com.example.demo.service.BookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,12 +24,13 @@ public class BookController {
 
     @GetMapping(value = "/books")
     public String getBooks(Model model,
-                             @RequestParam(value = "page", defaultValue = "1") int pageNumber) {
-        List<Book> books = bookService.findAll(pageNumber, ROW_PER_PAGE);
+                             @RequestParam(value = "page", defaultValue = "1") int pageNumber, String keyword) {
+        List<Book> books = bookService.findAll(pageNumber, ROW_PER_PAGE, keyword);
         long count = bookService.count();
         boolean hasPrev = pageNumber > 1;
         boolean hasNext = (pageNumber * ROW_PER_PAGE) < count;
         model.addAttribute("books", books);
+        model.addAttribute("keyword", keyword);
         model.addAttribute("hasPrev", hasPrev);
         model.addAttribute("prev", pageNumber - 1);
         model.addAttribute("hasNext", hasNext);

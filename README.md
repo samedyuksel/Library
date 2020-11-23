@@ -10,4 +10,6 @@ Bu proje Özgür Yazilim A.Ş 'ye staj başvurusu amacıyla geliştirilmiştir.
 
 Postgresql yerine **h2 database** de kullanılabilir. Bunun için *pom.xml* içerisinde bağımlılıklardan postgresql ile alakalı bağlılık kaldırılıp yerine h2 database bağlılığı eklenmelidir. h2 database bağlılık kodu için [tıklayın.](https://mvnrepository.com/artifact/com.h2database/h2/1.4.200)
 
+![img](img/ss.jpg)
+
 

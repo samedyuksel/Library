@@ -10,7 +10,7 @@
 <div th:replace="fragments/header :: header"/>
 <div class="container">
     <h1>View Author</h1>
-    <a class="badge badge-warning" th:href="@{/authors}">Back to Author List</a>
+    <a class="btn btn-warning btn-sm" th:href="@{/authors}">Back to Author List</a>
     <br/><br/>
     <div th:if="${author}">
         <table class="table striped table-hover">
@@ -37,11 +37,11 @@
         </table>
         <br/><br/>
         <div th:if="not ${allowDelete}">
-            <a class="badge badge-secondary" th:href="@{/authors/{authorId}/edit(authorId=${author.id})}">Edit</a> |
-            <a class="badge badge-danger" th:href="@{/authors/{authorId}/delete(authorId=${author.id})}">Delete</a>
+            <a class="btn btn-secondary btn-sm" th:href="@{/authors/{authorId}/edit(authorId=${author.id})}">Edit</a> |
+            <a class="btn btn-danger btn-sm" th:href="@{/authors/{authorId}/delete(authorId=${author.id})}">Delete</a>
         </div>
         <form th:if="${allowDelete}" th:action="@{/authors/{authorId}/delete(authorId=${author.id})}" method="POST">
-            <span class="badge badge-danger"> Delete this author? <input type="submit" class="btn-secondary" th:value="Yes" /> </span>
+            <span class="btn btn-danger btn-sm"> Delete this author? <input type="submit" class="btn-secondary" th:value="Yes" /> </span>
         </form>
 
     </div>

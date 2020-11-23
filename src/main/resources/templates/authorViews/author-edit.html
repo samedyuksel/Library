@@ -10,7 +10,7 @@
 <div th:replace="fragments/header :: header"/>
 <div class="container">
     <h1 th:text="${add} ? 'Create a Author:' : 'Edit a Author:'" />
-    <a class="badge badge-warning" th:href="@{/authors}">Back to Contact List</a>
+    <a class="btn btn-warning btn-sm" th:href="@{/authors}">Back to Contact List</a>
     <br/><br/>
     <form th:action="${add} ? @{/authors/add} : @{/authors/{authorId}/edit(authorId=${author.id})}"
           th:object="${author}" method="POST">
@@ -21,22 +21,16 @@
                 <td th:utext="${author.id}">...</td>
             </tr>
             <tr>
-                <td>Name</td>
-                <td>: </td>
-                <td><input type="text" th:field="*{name}" /></td>
+                <td><input class="form-control" type="text" th:field="*{name}" placeholder="Name" /></td>
             </tr>
             <tr>
-                <td>Sur Name</td>
-                <td>: </td>
-                <td><input type="text" th:field="*{surName}" /></td>
+                <td><input class="form-control" type="text" th:field="*{surName}" placeholder="Sur Name" /></td>
             </tr>
             <tr>
-                <td>Description</td>
-                <td>: </td>
-                <td><textarea th:field="*{description}" rows="3" cols="50" /></td>
+                <td><textarea class="form-control" th:field="*{description}" rows="3" cols="50" placeholder="Description"/></td>
             </tr>
         </table>
-        <input type="submit" class="btn btn-outline-success" th:value="${add} ? 'Create' : 'Update'" />
+        <input type="submit" class="btn btn-success" th:value="${add} ? 'Create' : 'Update'" />
     </form>
 
     <br/>

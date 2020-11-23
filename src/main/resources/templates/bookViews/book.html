@@ -10,7 +10,7 @@
 <div th:replace="fragments/header :: header"/>
 <div class="container">
     <h1>View Book</h1>
-    <a class="badge badge-warning" th:href="@{/books}">Back to Book List</a>
+    <a class="btn btn-warning btn-sm" th:href="@{/books}">Back to Book List</a>
     <br/><br/>
     <div th:if="${book}">
         <table class="table striped table-hover">
@@ -42,11 +42,11 @@
         </table>
         <br/><br/>
         <div th:if="not ${allowDelete}">
-            <a class="badge badge-secondary" th:href="@{/books/{bookId}/edit(bookId=${book.id})}">Edit</a> |
-            <a class="badge badge-danger" th:href="@{/books/{bookId}/delete(bookId=${book.id})}">Delete</a>
+            <a class="btn btn-secondary btn-sm" th:href="@{/books/{bookId}/edit(bookId=${book.id})}">Edit</a> |
+            <a class="btn btn-danger btn-sm" th:href="@{/books/{bookId}/delete(bookId=${book.id})}">Delete</a>
         </div>
         <form th:if="${allowDelete}" th:action="@{/books/{bookId}/delete(bookId=${book.id})}" method="POST">
-            <span class="badge badge-danger"> Delete this author? <input type="submit" class="btn-secondary" th:value="Yes" /> </span>
+            <span class="btn btn-danger btn-sm"> Delete this author? <input type="submit" class="btn-secondary" th:value="Yes" /> </span>
         </form>
 
     </div>
