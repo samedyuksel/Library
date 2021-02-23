@@ -1,7 +1,5 @@
 ## Library Web Application :blue_book:
 
-Bu proje Özgür Yazilim A.Ş 'ye staj başvurusu amacıyla geliştirilmiştir. 
-
 * Java 8 ile kodlanmıştır. Çalıştırabilmek için öncelikle **java8 sdk** kurulmalı ve kullanılacak ide'de buna göre ayarların yapılması gerekmektedir.
 
 * Kaynak dosyalar indirilip ide ile açıldıktan sonra *pom.xml* içerisindeki bağımlılıklarda bulunan jar'lar ide'nin desteklemesi halinde otomatik olarak indirelecektir.
